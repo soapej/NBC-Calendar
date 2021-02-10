@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NBC Prices</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="details.css">
+</head>
+<body>
+    
+
+        <div class="details-box">
+                <div class="details-header">
+                           <div style="text-align:right;"><a class="details-close-btn" href="javascript:void(0)">&times;</a></div>
+                           <h2>DATE</h2>
+                       </div>
+               <div class="cave-surface-box">
+                       <div class="cavern-section">
+                           <h4>Cavern Tours</h4>
+                           <p>DISCOVERY TOUR</p>
+                           <div class="discovery event-box">
+                               <div class="details-price-box">
+                                   <p>
+                                       Adult - <span class="adult">Not Available</span>
+                                    <br/>
+                                   Child - <span class="child">Not Available</span>
+                                </p>
+                               </div>
+                               <div class="buy-btn-box">
+                                   <a href="https://tickets.naturalbridgecaverns.com/WebStore/Shop/ViewItems.aspx?CG=NBCWEB&C=DISC"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                               </div>
+                           </div>
+                           <hr>
+                           <p>HIDDEN PASSAGES TOUR</p>
+                           <div class="hidden-passages event-box">
+                               <div class="details-price-box">
+                                    <p>
+                                            Adult - <span class="adult">Not Available</span>
+                                         <br/>
+                                        Child - <span class="child">Not Available</span>
+                                     </p>
+                               </div>
+                               <div class="buy-btn-box">
+                                   <a href="https://tickets.naturalbridgecaverns.com/WebStore/Shop/ViewItems.aspx?CG=NBCWEB&C=ILLU"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                               </div>
+                           </div>
+                           <hr>
+                           <p>COMBO TOUR - SEE BOTH &amp; SAVE</p>
+                           <div class="combo-tour event-box">
+                               <div class="details-price-box">
+                                    <p>
+                                            Adult - <span class="adult">Not Available</span>
+                                         <br/>
+                                        Child - <span class="child">Not Available</span>
+                                     </p>
+                               </div>
+                               <div class="buy-btn-box">
+                                   <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=CMBO"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                               </div>
+                           </div>
+                           <hr>
+                           <p>LANTERN TOUR</p>
+                           <div class="lantern event-box">
+                               <div class="details-price-box">
+                                    <p>
+                                            Adult - <span class="adult">Not Available</span>
+                                         <br/>
+                                        Child - <span class="child">Not Available</span>
+                                     </p>
+                               </div>
+                               <div class="buy-btn-box">
+                                   <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=LANTOUR"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                               </div>
+                           </div>
+                       </div>
+               
+                       <div class="surface-section">
+                           <h4>Surface Attractions</h4>
+                           <p>CANOPY EXPLORER ROPES COURSE</p>
+                           <div class="canopy-ropes event-box">
+                               <div class="details-price-box">
+                                   <p>$19.99</p>
+                               </div>
+                               <div class="buy-btn-box"></div>
+                           </div>
+                           <p>CANOPY ZIP LINE</p>
+                           <div class="canopy-zip event-box">
+                               <div class="details-price-box">
+                                   <p>$19.99</p>
+                               </div>
+                               <div class="buy-btn-box">
+                                   <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=ATTR"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                               </div>
+                           </div>
+                           <p>CANOPY COMBO - ROPES COURSE &amp; ZIP LINE</p>
+                           <div class="canopy-combo event-box">
+                               <div class="details-price-box">
+                                   <p>$29.99</p>
+                               </div>
+                              <div class="buy-btn-box"></div>
+                           </div>
+                           <hr>
+                           <p>AMAZEN' RANCH ROUNDUP - MAZE</p>
+                           <div class="maze event-box">
+                               <div class="details-price-box">
+                                   <p>$9.99</p>
+                               </div>
+                               <div class="buy-btn-box">
+                                   <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=ATTR"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                               </div>
+                           </div>
+                       </div>
+               </div>
+               </div>
+
+
+      <script  src="https://code.jquery.com/jquery-3.4.0.js"  integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="  crossorigin="anonymous"></script>
+     
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    // https://cors-anywhere.herokuapp.com/
+
+jQuery(function(){
+
+
+    axios.get('/api/readCSV4_list.php')
+        .then(function(res, targetDate){
+            var targetDate;
+            var matchingData = [];
+                    
+            // get URL querystring
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            var targetDate = vars["date"];
+            // convert targetDate for header text
+            dateHeader = new Date(targetDate.replace(/-/g, '\/'));
+            var targetD = dateHeader.getDate();
+            var targetM = dateHeader.getMonth();
+            targetM += 1;
+            switch (true) {
+                case (targetM === 1):
+                    targetM = 'January'
+                    break;
+                case (targetM === 2):
+                    targetM = 'February'
+                    break;
+                case (targetM === 3):
+                    targetM = 'March'
+                    break;
+                case (targetM === 4):
+                    targetM = 'April'
+                    break;
+                case (targetM === 5):
+                    targetM = 'May'
+                    break;
+                case (targetM === 6):
+                    targetM = 'June'
+                    break;
+                case (targetM === 7):
+                    targetM = 'July'
+                    break;
+                case (targetM === 8):
+                    targetM = 'August'
+                    break;
+                case (targetM === 9):
+                    targetM = 'September'
+                    break;
+                case (targetM === 10):
+                    targetM = 'October'
+                    break;
+                case (targetM === 11):
+                    targetM = 'November'
+                    break;
+                case (targetM === 12):
+                    targetM = 'December'
+                    break;
+            }
+            var targetY = dateHeader.getFullYear();
+            jQuery('.details-header h2').text(targetM + ' ' + targetD + ', ' + targetY);
+            // filter data for the target date
+            res.data.map(function(i){
+                var mapDate = i['Date'] != null ? i['Date'].toString().slice(0,10) : '';
+                if (mapDate === targetDate ) {
+                    matchingData.push(i);
+                }
+            });
+            // fill in prices
+            matchingData.map(function(i){
+                if (i['PLU'] == "10109001-EW1018") {
+                    jQuery('.discovery .adult').text('$' + i["Price"]);
+                } else if (i['PLU'] == "10109002-EW1018") {
+                    jQuery('.discovery .child').text('$' + i["Price"]);
+                } else if (i['PLU'] == "10109011-EW1217") {
+                    jQuery('.hidden-passages .adult').text('$' + i["Price"]);
+                } else if (i['PLU'] == "10109012-EW1217") {
+                    jQuery('.hidden-passages .child').text('$' + i["Price"]);
+                } else if (i['PLU'] == "10109021-EW1217") {
+                    jQuery('.combo-tour .adult').text('$' + i["Price"]);
+                } else if (i['PLU'] == "10109022-EW1217") {
+                    jQuery('.combo-tour .child').text('$' + i["Price"]);
+                } else if (i['PLU'] == "10109041-EW1217") {
+                    jQuery('.lantern .adult').text('$' + i["Price"]);
+                } else if (i['PLU'] == "10109042-EW1217") {
+                    jQuery('.lantern .child').text('$' + i["Price"]);
+                }
+            });
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+});
+
+</script>
+
+
+
+
+<script>
+
+// Details below Calendar functions
+
+jQuery('.price-link').click(function(){
+    var targetDate = jQuery(this).parents('td').data(date);
+    console.log(targetDate);
+});
+
+
+</script>
+
+
+</body>
+</html>

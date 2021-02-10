@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+
+
+    <div id="calendar"></div>
+
+    <!-- Details box -->
+
+    <div class="details-box">
+        <div class="details-header">
+                   <div style="text-align:right;"><a class="details-close-btn" href="javascript:void(0)">&times;</a></div>
+                   <h2>DATE</h2>
+               </div>
+       <div class="cave-surface-box">
+               <div class="cavern-section">
+                   <h4>Cavern Tours</h4>
+                   <p class="discovery-text">DISCOVERY TOUR</p>
+                   <div class="discovery event-box">
+                       <div class="details-price-box">
+                           <p>
+                               Adult - <span class="adult">Not Available</span>
+                            <br/>
+                           Child - <span class="child">Not Available</span>
+                        </p>
+                       </div>
+                       <div class="buy-btn-box">
+                           <a href="https://tickets.naturalbridgecaverns.com/WebStore/Shop/ViewItems.aspx?CG=NBCWEB&C=DISC"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                       </div>
+                   </div>
+                   <hr>
+                   <p>HIDDEN PASSAGES TOUR</p>
+                   <div class="hidden-passages event-box">
+                       <div class="details-price-box">
+                            <p>
+                                    Adult - <span class="adult">Not Available</span>
+                                 <br/>
+                                Child - <span class="child">Not Available</span>
+                             </p>
+                       </div>
+                       <div class="buy-btn-box">
+                           <a href="https://tickets.naturalbridgecaverns.com/WebStore/Shop/ViewItems.aspx?CG=NBCWEB&C=ILLU"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                       </div>
+                   </div>
+                   <hr>
+                   <p>COMBO TOUR - SEE BOTH &amp; SAVE</p>
+                   <div class="combo-tour event-box">
+                       <div class="details-price-box">
+                            <p>
+                                    Adult - <span class="adult">Not Available</span>
+                                 <br/>
+                                Child - <span class="child">Not Available</span>
+                             </p>
+                       </div>
+                       <div class="buy-btn-box">
+                           <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=CMBO"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                       </div>
+                   </div>
+                   <hr>
+                   <p>LANTERN TOUR</p>
+                   <div class="lantern event-box">
+                       <div class="details-price-box">
+                            <p>
+                                    Adult - <span class="adult">Not Available</span>
+                                 <br/>
+                                Child - <span class="child">Not Available</span>
+                             </p>
+                       </div>
+                       <div class="buy-btn-box">
+                           <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=LANTOUR"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                       </div>
+                   </div>
+               </div>
+       
+               <div class="surface-section">
+                   <h4>Surface Attractions</h4>
+                   <p>CANOPY EXPLORER <br class="canopy-br"/>ROPES COURSE</p>
+                   <div class="canopy-ropes event-box">
+                       <div class="details-price-box">
+                           <p>$19.99</p>
+                       </div>
+                       <div class="buy-btn-box"></div>
+                   </div>
+                   <p>CANOPY ZIP LINE</p>
+                   <div class="canopy-zip event-box">
+                       <div class="details-price-box">
+                           <p>$19.99</p>
+                       </div>
+                       <div class="buy-btn-box">
+                           <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=ATTR"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                       </div>
+                   </div>
+                   <p>CANOPY COMBO - <br class="canopy-br"/>ROPES COURSE &amp; ZIP LINE</p>
+                   <div class="canopy-combo event-box">
+                       <div class="details-price-box">
+                           <p>$29.99</p>
+                       </div>
+                      <div class="buy-btn-box"></div>
+                   </div>
+                   <hr>
+                   <p>AMAZEN' RANCH <br class="canopy-br"/>ROUNDUP - MAZE</p>
+                   <div class="maze event-box">
+                       <div class="details-price-box">
+                           <p>$9.99</p>
+                       </div>
+                       <div class="buy-btn-box">
+                           <a href="https://tickets.naturalbridgecaverns.com/webstore/shop/viewItems.aspx?cg=NBCWEB&c=ATTR"><img src="/wp-content/uploads/2019/05/buy-now.png" /></a>
+                       </div>
+                   </div>
+               </div>
+       </div>
+       </div>
+
+
+    
+    <script src='https://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+    <script src='https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+    <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+    <script src='https://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+        
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script> -->
+
+    <script src="moment.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script>
+
+        // https://cors-anywhere.herokuapp.com/
+
+        // var prevBtn = jQuery('.fc-prev-button:contains("Month")').html();
+            // console.log(prevBtn.slice(-4));
+    
+            jQuery(document).ready(function() {
+
+             
+// clear WP theme styling
+  jQuery('.page-id-1723, .page-id-1539, .page-id-1497').removeClass('style-simple');
+
+    var today = moment();
+    var avgPriceRange = [20, 25];
+    var dates = [];
+    var displayMonth;
+    var displayYear;
+    var displayDate;
+    var date;
+    var endDate;
+    var price;
+    var priceClass;
+    var easter = '04-21';
+    var christmas = '12-25';
+    var thanksgiving = '11-28';
+
+    jQuery('#calendar').fullCalendar({
+        fixedWeekCount: false,
+        plugins: ['moment', 'dayGrid'],
+        validRange: function(nowDate) {
+            return {
+            start: nowDate,
+            end: nowDate.clone().add(1, 'months')
+            };
+        },
+        viewRender: function(){
+
+
+            if (jQuery(window).width() < 550) {
+                if (jQuery('.fc-next-button').text().length > 4) {
+                    jQuery('.fc-next-button').html('Next <span class="fc-icon fc-icon-right-single-arrow"></span>');
+                }
+                if (jQuery('.fc-prev-button').text().length > 8) {
+                    jQuery('.fc-prev-button').html('<span class="fc-icon fc-icon-left-single-arrow"></span> Previous');
+                }
+            }
+
+
+            // remove plugin displayDate
+            jQuery('.fc-content-skeleton').remove();
+
+            // fill holiday cells
+            jQuery('.fc-day').each(function(){
+                if (jQuery(this).data('date').slice(5,10) === easter || jQuery(this).data('date').slice(5,10) === thanksgiving || jQuery(this).data('date').slice(5,10) === christmas) {
+                    jQuery(this).append('<p class="na-text">Closed</p>')
+                }
+            });
+
+            // change header text
+            if (jQuery(window).width() > 650) {
+                jQuery('.fc-day-header').each(function(i){
+                    var headerLength = jQuery(this).text().length;
+                    if (headerLength < 4) {
+                        if (i === 2) {
+                            jQuery(this).append('sday');
+                        } else if (i === 3) {
+                            jQuery(this).append('nesday');
+                        } else if (i ===4) {
+                            jQuery(this).append('rsday');
+                        } else if (i === 6) {
+                            jQuery(this).append('urday');
+                        } else {
+                            jQuery(this).append('day');
+                        }
+                    }
+                });
+            }
+                
+            axios.get('https://naturalbridgecaverns.com/api/readCSV4_list.php')
+            .then(function(res){
+                
+                // store date being displayed
+                switch (true) {
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Jan"):
+                        displayMonth = 1;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Feb"):
+                        displayMonth = 2;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Mar"):
+                        displayMonth = 3;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Apr"):
+                        displayMonth = 4;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "May"):
+                        displayMonth = 5;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Jun"):
+                        displayMonth = 6;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Jul"):
+                        displayMonth = 7;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Aug"):
+                        displayMonth = 8;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Sep"):
+                        displayMonth = 9;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Oct"):
+                        displayMonth = 10;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Nov"):
+                        displayMonth = 11;
+                        break;
+                    case (jQuery('#calendar h2').html().slice(0,3) === "Dec"):
+                        displayMonth = 12;
+                        break;
+                }
+
+                displayYear = jQuery('#calendar h2').html().slice(-4);
+                displayDate = displayMonth + ' 1, ' + displayYear;
+                displayDate = new Date(displayDate);
+                // console.log(displayDate);
+                console.log(displayMonth);
+                var prices = [];
+                // map fetched data
+                res.data.map(function(set){
+
+                // filter for "Adult Discovery" product id (change for production)
+                        // PLU might not remain a constant
+                    if (set['PLU'] === "10109001-EW1018") {
+                        // fill dates[] to find latest date available
+                        
+                        date = set['Date'] != null ? set['Date'].slice(0,10) : '';
+                        dates.push(date);
+                        dates.sort().reverse();
+                        endDate = new Date(dates[0]);
+                    
+                        // set  price and priceClass
+                        price = set['Price'];
+                        prices.push(price);
+                        if (price <= avgPriceRange[0]) {
+                            priceClass = "lowPrice";
+                        } else if (price > avgPriceRange[1]) {
+                            priceClass = "peakPrice";
+                        } else {
+                            priceClass = "avgPrice";
+                        }
+                        // match with fullcalendar cells
+                        //   same date, empty cell, this month
+                        jQuery('#calendar .fc-bg .fc-today, #calendar .fc-bg .fc-future').each(function(){
+                            var calDate = jQuery(this).data('date').slice(8);
+                            if (calDate.slice(0,1) == 0) {
+                                calDate = calDate.slice(1);
+                            }
+                            if (jQuery(this).data('date') === date && jQuery(this).html().length < 1 && !jQuery(this).hasClass('fc-other-month') && !jQuery(this).hasClass('.fc-past')) {
+                                // add price-box
+                                jQuery(this).append('\
+                                    <a href="javascript:void(0)" class="price-link">\
+                                        <span class="display-date">' + calDate + '</span>\
+                                        <div class="price-box">\
+                                            <p class="price">\
+                                                <span class="adult-label">ADULT</span><br/>\
+                                                <span class="display-price">$' + price + '</span>\
+                                            </p>\
+                                        </div>\
+                                    </a>\
+                                ').addClass(priceClass);
+                            }
+                        });
+                        // fill in the fc-past day numbers
+                        jQuery('.fc-past, .fc-future.fc-other-month').each(function(){
+                            var calDate = jQuery(this).data('date').slice(8);
+                            if (calDate.slice(0,1) == 0) {
+                                calDate = calDate.slice(1);
+                            }
+                            if(jQuery(this).find('.display-date').length < 1) {
+                                jQuery(this).append('<span class="display-date">' + calDate + '</span>');
+                            }
+                        });
+                    }
+                });
+                // prices.sort();
+                // var lowestPrice = prices[0];
+                // jQuery('.lowest-price-text span').text(lowestPrice);
+                var displayPrices = [];
+                jQuery('.display-price').each(function(){
+                    var price = jQuery(this).text();
+                    displayPrices.push(price);
+                });
+                displayPrices.sort();
+                jQuery('.lowest-price-text span').text(displayPrices[0]);
+
+                // fill empty cells with "N/A" (no PLU match)
+                jQuery('#calendar .fc-bg td').each(function(){
+                    if (jQuery(this).html().length < 1 && !jQuery(this).hasClass('fc-other-month') && !jQuery(this).hasClass('fc-past')) {
+                        jQuery(this).append("<p class='na-text'>N/A</p>")
+                    }
+                });
+
+
+                // temporary month limit to August
+                if (displayMonth == 8) {
+                    jQuery('.fc-next-button').prop('disabled', true);
+                } else if (displayMonth == 7) {
+                    jQuery('.fc-prev-button').prop('disabled', true);
+                } else {
+                    jQuery('.fc-prev-button, .fc-next-button').prop('disabled', false);
+                }
+
+
+                // compare endDate to displayDate to see if next month is available
+                // if (moment(displayDate).add(1, 'months').date(1) < endDate) {
+                //     jQuery('.fc-next-button').prop('disabled', false);
+                // } else {
+                //     jQuery('.fc-next-button').prop('disabled', true);
+                // }
+
+                // disable previous-month btn if showing current month
+                // if (displayMonth <= moment().month() + 1) {
+                //     jQuery('.fc-prev-button').prop('disabled', true);
+                // } else {
+                //     jQuery('.fc-prev-button').prop('disabled', false);
+                // }
+
+                // on click calendar square
+                jQuery('.price-link').on('click', function(){
+                    var targetDate = jQuery(this).parents('td').data('date');
+                    var matchingData = [];
+
+                    // scroll to details
+                    jQuery('.details-box').css('display', 'block');
+                    
+                    setTimeout(function(){
+                        var scroll = jQuery('.details-box').offset().top;
+                        if (jQuery(window).width() > 1240) {
+                            window.scroll({
+                                top: scroll - 110, 
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            window.scroll({
+                                top: scroll - 30, 
+                                behavior: 'smooth'
+                            });
+                        }
+                        
+                    }, 100);
+
+                    res.data.map(function(i){
+                        var mapDate = i['Date'] != null ? i['Date'].toString().slice(0,10) : '';
+                        if (mapDate === targetDate ) {
+                            matchingData.push(i);
+                        }
+                    });
+                    // fill in prices
+                    matchingData.map(function(i){
+                        if (i['PLU'] == "10109001-EW1018") {
+                            jQuery('.discovery .adult').text('$' + i["Price"]);
+                        } else if (i['PLU'] == "10109002-EW1018") {
+                            jQuery('.discovery .child').text('$' + i["Price"]);
+                        } else if (i['PLU'] == "10109011-EW1217") {
+                            jQuery('.hidden-passages .adult').text('$' + i["Price"]);
+                        } else if (i['PLU'] == "10109012-EW1217") {
+                            jQuery('.hidden-passages .child').text('$' + i["Price"]);
+                        } else if (i['PLU'] == "10109021-EW1217") {
+                            jQuery('.combo-tour .adult').text('$' + i["Price"]);
+                        } else if (i['PLU'] == "10109022-EW1217") {
+                            jQuery('.combo-tour .child').text('$' + i["Price"]);
+                        } else if (i['PLU'] == "10109041-EW1217") {
+                            jQuery('.lantern .adult').text('$' + i["Price"]);
+                        } else if (i['PLU'] == "10109042-EW1217") {
+                            jQuery('.lantern .child').text('$' + i["Price"]);
+                        }
+                    });
+                    
+                    //format details header
+                    var deetsHead = moment(targetDate).format("MMMM D, YYYY");
+                    jQuery('.details-header h2').text(deetsHead);
+                });
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+        } // /viewRender()
+        
+      
+       
+    });
+
+    jQuery('.fc-prev-button').prop('disabled', true);
+
+    jQuery('.fc-next-button').click(function(){
+        // statement to limit available months to 2
+        if(jQuery('.fc-next-button').prop('disabled') === false) {
+            jQuery('.fc-prev-button').prop('disabled', false);
+            jQuery('.fc-next-button').prop('disabled', true);
+        }
+    });
+    jQuery('.fc-prev-button').click(function(){
+        if(jQuery('.fc-prev-button').prop('disabled') === false) {
+            jQuery('.fc-prev-button').prop('disabled', true);
+            jQuery('.fc-next-button').prop('disabled', false);
+        }
+    });
+    
+
+    // move elements
+    jQuery('.fc-prev-button').prependTo('.fc-left').append('Previous Month');
+    jQuery('.fc-next-button').prepend("Next Month");
+    jQuery('.fc-toolbar h2').prependTo('.fc-center');
+    jQuery('.fc-today-button').remove();
+
+    // set price-link height
+    var calendarCellHeight = jQuery('.fc-day').height();
+    jQuery('.price-link').css('height', calendarCellHeight + 5 +'px');
+
+
+    // details close button
+    jQuery('.details-close-btn').on('click', function(){
+        var calendarScroll = jQuery('#calendar').offset().top;
+        jQuery('.details-box').fadeOut();
+        window.scroll({
+            top: calendarScroll - 180, 
+            behavior: 'smooth'
+        });
+    })
+
+      // sticky Details header
+      var makeSticky = function(){
+          var scrollTop = jQuery(window).scrollTop();
+          if ( jQuery('.details-box').css('display') === "block" && jQuery(window).width() < 960) {
+              var stickyHeader = jQuery('.details-box').offset().top;
+              if(scrollTop > stickyHeader) {
+                  jQuery('.details-header').addClass('sticky');
+                  
+              } else {
+                  jQuery('.details-header').removeClass('sticky');
+              }
+          } 
+      }
+
+      makeSticky();
+
+        
+    jQuery(window).scroll(function(){
+        makeSticky();
+    });
+
+    // change text if aquifer tour is active
+    axios.get('/api/aquifer_status.json')
+        .then(function(res){
+            if (res.data['aquifer']['status'] === 'true') {
+                jQuery('.discovery-text').text('Aquifer Tour');
+            }
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+
+});
+
+
+
+jQuery(window).resize(function(){
+    // change header text
+    if (jQuery(window).width() > 650) {
+        jQuery('.fc-day-header').each(function(i){
+            var headerLength = jQuery(this).text().length;
+            if (headerLength < 4) {
+                if (i === 2) {
+                    jQuery(this).append('sday');
+                } else if (i === 3) {
+                    jQuery(this).append('nesday');
+                } else if (i ===4) {
+                    jQuery(this).append('rsday');
+                } else if (i === 6) {
+                    jQuery(this).append('urday');
+                } else {
+                    jQuery(this).append('day');
+                }
+            }
+        });
+
+        
+    } else {
+        jQuery('.fc-day-header').each(function(){
+            var headerLength = jQuery(this).text().length;
+            if (headerLength > 3) {
+                jQuery(this).text(jQuery(this).text().slice(0,3));
+            }
+        });
+    }
+
+
+
+    if (jQuery(window).width() < 550) {
+        if (jQuery('.fc-next-button').text().length > 4) {
+            jQuery('.fc-next-button').html('Next <span class="fc-icon fc-icon-right-single-arrow"></span>');
+        }
+        if (jQuery('.fc-prev-button').text().length > 8) {
+            jQuery('.fc-prev-button').html('<span class="fc-icon fc-icon-left-single-arrow"></span>Previous');
+        }
+    } else {
+        if (jQuery('.fc-next-button').text().length < 7) {
+            jQuery('.fc-next-button').html('Next Month <span class="fc-icon fc-icon-right-single-arrow"></span>');
+        }
+        if (jQuery('.fc-prev-button').text().length < 9) {
+            jQuery('.fc-prev-button').html('<span class="fc-icon fc-icon-left-single-arrow"></span>Previous Month');
+        }
+    }
+
+
+    // setTimeout(function(){
+        // var calendarCellHeight = jQuery('.fc-day').height();
+        // jQuery('.price-link').css('height', calendarCellHeight + 5 +'px');
+    // }, 200)
+    
+
+
+
+    // taken from slotholder css .forcefullwidth_wrapper_tp_banner,
+
+
+});
+
+        
+         
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html> 

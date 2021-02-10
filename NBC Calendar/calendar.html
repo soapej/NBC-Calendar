@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calendar</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
+
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.css' rel='stylesheet' />
+    <!-- <link href='/fullcalendar/daygrid/main.css' rel='stylesheet' /> -->
+
+    <!-- <link rel="stylesheet" href="jquery-ui.min.css"> -->
+    <link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+
+
+    <div id="calendar"></div>
+
+
+    
+    <script src='https://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+    <script src='https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+    <script src="https://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
+    <script src='https://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script>
+    
+        $(document).ready(function() {
+
+            $('body').removeClass('style-simple');
+
+            var today = Date.today();
+            var avgPriceRange = [13.25, 15];
+            var dates = [];
+            var displayMonth;
+            var displayYear;
+            var displayDate;
+            var date;
+            var endDate;
+            var price;
+            var priceClass;
+            var easter = '04-21';
+            var christmas = '12-25';
+            var thanksgiving = '11-28';
+
+            $('#calendar').fullCalendar({
+                // defaultDate: '2019-06-04',
+                // header: { center: 'dayGridMonth,timeGridWeek' },
+                fixedWeekCount: false,
+                viewRender: function(){
+
+                    // fill holiday cells
+                    $('.fc-day').each(function(){
+                        if ($(this).data('date').slice(5,10) === easter || $(this).data('date').slice(5,10) === thanksgiving || $(this).data('date').slice(5,10) === christmas) {
+                            $(this).append('<p class="na-text">Closed</p>')
+                        }
+                    })
+                        
+                    axios.get('https://cors-anywhere.herokuapp.com/https://naturalbridgecaverns.com/api/readCSV4_list.php')
+                    .then(function(res){
+                        
+                        // store date being displayed
+                        switch (true) {
+                            case ($('#calendar h2').html().slice(0,3) === "Jan"):
+                                displayMonth = 1;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Feb"):
+                                displayMonth = 2;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Mar"):
+                                displayMonth = 3;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Apr"):
+                                displayMonth = 4;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "May"):
+                                displayMonth = 5;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Jun"):
+                                displayMonth = 6;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Jul"):
+                                displayMonth = 7;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Aug"):
+                                displayMonth = 8;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Sep"):
+                                displayMonth = 9;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Oct"):
+                                displayMonth = 10;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Nov"):
+                                displayMonth = 11;
+                                break;
+                            case ($('#calendar h2').html().slice(0,3) === "Dec"):
+                                displayMonth = 12;
+                                break;
+                        }
+
+                        displayYear = $('#calendar h2').html().slice(-4);
+                        displayDate = displayMonth + ' 1, ' + displayYear;
+                        displayDate = new Date(displayDate);
+
+                        // map fetched data
+                        res.data.map(function(set){
+
+                        // filter for "Adult Discovery" product id (change for production)
+                                // PLU might not remain a constant
+                            if (set['PLU'] === "10109001-EW1217") {
+                                // fill dates[] to find latest date available
+                                date = set['Date'] != null ? set['Date'].slice(0,10) : '';
+                                dates.push(date);
+                                dates.sort().reverse();
+                                endDate = new Date(dates[0]);
+                            
+                                // set  price and priceClass
+                                price = set['Price'];
+                                if (price <= avgPriceRange[0]) {
+                                    priceClass = "lowPrice";
+                                } else if (price > avgPriceRange[1]) {
+                                    priceClass = "peakPrice";
+                                } else {
+                                    priceClass = "avgPrice";
+                                }
+                                // match with fullcalendar cells
+                                //   same date, empty cell, this month
+                                $('#calendar .fc-bg td').each(function(){
+                                    if ($(this).data('date') === date && $(this).html().length < 1 && !$(this).hasClass('fc-other-month')) {
+                                        // add price-box
+                                        $(this).append(`
+                                            <a href="https://nbc-staging.zbbdtge4-liquidwebsites.com/calendar-2?date=${date}" class="price-link">
+                                                <p class="price-box">ADULT<br/>
+                                                    <span>$${price}</span></p>
+                                            </a>
+                                        `).addClass(priceClass);
+                                    }
+                                });
+                            }
+                        });
+                        
+                        // fill empty cells with "N/A" (no PLU match)
+                        $('#calendar .fc-bg td').each(function(){
+                            if ($(this).html().length < 1 && !$(this).hasClass('fc-other-month') && !$(this).hasClass('fc-past')) {
+                                $(this).append("<p class='na-text'>N/A</p>")
+                            }
+                        });
+
+                        // compare endDate to displayDate to see if next month is available
+                        if (displayDate.next().month().moveToFirstDayOfMonth() < endDate) {
+                            $('.fc-next-button').prop('disabled', false);
+                        } else {
+                            $('.fc-next-button').prop('disabled', true);
+                        }
+
+                        // disable previous-month btn if showing current month
+                        if (displayMonth <= today.getMonth() + 1) {
+                            $('.fc-prev-button').prop('disabled', true);
+                        } else {
+                            $('.fc-prev-button').prop('disabled', false);
+                        }
+                    })
+                    .catch(function(err){
+                        console.log(err);
+                    })
+                } // /viewRender()
+
+               
+            });
+
+            // move elements
+            $('.fc-prev-button').prependTo('.fc-left').append('Previous Month');
+            $('.fc-next-button').prepend("Next Month");
+            $('.fc-toolbar h2').prependTo('.fc-center');
+            $('.fc-today-button').remove();
+
+            // change header text
+            $('.fc-day-header').each(function(i){
+                if (i === 2) {
+                    $(this).append('sday');
+                } else if (i === 3) {
+                    $(this).append('nesday');
+                } else if (i ===4) {
+                    $(this).append('rsday');
+                } else if (i === 6) {
+                    $(this).append('urday');
+                } else {
+                    $(this).append('day');
+                }
+            });
+
+        });
+
+
+          
+    </script>
+</body>
+</html> 
